@@ -4,10 +4,13 @@ import java.util.Scanner;
 
 public class Calculator {
   public static void main (String[] args) {
-
-    System.out.println("List of operations: add subtract multiply divide alphabetize");
     // initialize scanner variable
     Scanner input = new Scanner(System.in);
+
+    // Extract error message into a variable for reusability.
+    String errorMessage = "Invalid input entered. Terminating...";
+
+    System.out.println("List of operations: add subtract multiply divide alphabetize");
 
     // receive input
     System.out.println("Enter an operation: ");
@@ -22,18 +25,15 @@ public class Calculator {
 
         if (input.hasNextInt()) {
           addInput1 = input.nextInt();
+          if (input.hasNextInt()) {
+            addInput2 = input.nextInt();
+            System.out.println("Answer: " + (addInput1 + addInput2));
+          } else {
+            System.out.println(errorMessage);
+          };
         } else {
-          System.out.println("Invalid input entered. Terminating...");
-          return;
+          System.out.println(errorMessage);
         };
-        if (input.hasNextInt()) {
-          addInput2 = input.nextInt();
-        } else {
-          System.out.println("Invalid input entered. Terminating...");
-          return;
-        };
-
-        System.out.println("Answer: " + (addInput1 + addInput2));
 
         break;
       case "subtract":
@@ -44,42 +44,33 @@ public class Calculator {
 
         if (input.hasNextInt()) {
           subtractInput1 = input.nextInt();
+          if (input.hasNextInt()) {
+            subtractInput2 = input.nextInt();
+            System.out.println("Answer: " + (subtractInput1 - subtractInput2));
+          } else {
+            System.out.println(errorMessage);
+          };
         } else {
-          System.out.println("Invalid input entered. Terminating...");
-          return;
+          System.out.println(errorMessage);
         };
-        if (input.hasNextInt()) {
-          subtractInput2 = input.nextInt();
-        } else {
-          System.out.println("Invalid input entered. Terminating...");
-          return;
-        };
-
-        System.out.println("Answer: " + (subtractInput1 - subtractInput2));
         break;
 
       case "multiply":
         // some operation;
         System.out.println("Enter two doubles: ");
-        double multiplyInput1;
-        double multiplyInput2;
 
         if (input.hasNextDouble()) {
-          multiplyInput1 = input.nextDouble();
+          double multiplyInput1 = input.nextDouble();
+          if (input.hasNextDouble()) {
+           double multiplyInput2 = input.nextDouble();
+            System.out.printf("Answer: " + "%.2f\n", multiplyInput1 * multiplyInput2);
+          } else {
+            System.out.println(errorMessage);
+          } 
         } else {
-          System.out.println("Invalid input entered. Terminating...");
-          return;
-        };
-        if (input.hasNextDouble()) {
-          multiplyInput2 = input.nextDouble();
-        } else {
-          System.out.println("Invalid input entered. Terminating...");
-          return;
+          System.out.println(errorMessage);
         };
 
-        double multiplyResult = multiplyInput1 * multiplyInput2;
-
-        System.out.printf("Answer: " + "%.2f\n", multiplyResult);
         break;
 
       case "divide":
@@ -90,56 +81,40 @@ public class Calculator {
 
         if (input.hasNextDouble()) {
           divideInput1 = input.nextDouble();
+          if (input.hasNextDouble()) {
+            divideInput2 = input.nextDouble();
+            if (divideInput2 != 0) {
+              System.out.printf("Answer: " + "%.2f\n", divideInput1 / divideInput2);
+            } else {
+              System.out.println(errorMessage);
+            }
+          } else {
+            System.out.println(errorMessage);
+          };
         } else {
-          System.out.println("Invalid input entered. Terminating...");
-          return;
-        };
-        if (input.hasNextDouble()) {
-          divideInput2 = input.nextDouble();
-          if (divideInput2 == 0) {
-            System.out.println("Invalid input entered. Terminating...");
-            return;
-          }
-        } else {
-          System.out.println("Invalid input entered. Terminating...");
-          return;
+          System.out.println(errorMessage);
         };
 
-        double divideResult = divideInput1 / divideInput2;
-
-        System.out.printf("Answer: " + "%.2f\n", divideResult);
         break;
       case "alphabetize":
         // some operation;
         System.out.println("Enter two words: ");
-        String alphabetizeInput1;
-        String alphabetizeInput2;
-
-        if (input.hasNext()) {
-          alphabetizeInput1 = input.next();
-        } else {
-          System.out.println("Invalid input entered. Terminating...");
-          return;
-        }; 
-        if (input.hasNext()) {
-          alphabetizeInput2 = input.next();
-        } else {
-          System.out.println("Invalid input entered. Terminating...");
-          return;
-        }; 
-
-        if (alphabetizeInput1.toLowerCase().compareTo(alphabetizeInput2.toLowerCase()) < 0) {
+        String alphabetizeInput1 = input.next();
+        String alphabetizeInput2 = input.next();
+        
+        if (alphabetizeInput1.toLowerCase().equals(alphabetizeInput2.toLowerCase())) {
+          System.out.println("Answer: Chicken or Egg.");
+        } else if (alphabetizeInput1.toLowerCase().compareTo(alphabetizeInput2.toLowerCase()) < 0) {
           System.out.println("Answer: " + alphabetizeInput1 + " comes before " + alphabetizeInput2 + " alphabetically.");
         } else if (alphabetizeInput1.toLowerCase().compareTo(alphabetizeInput2.toLowerCase()) > 0) {
           System.out.println("Answer: " + alphabetizeInput2 + " comes before " + alphabetizeInput1 + " alphabetically.");
         } else {
-          System.out.println("Answer: Chicken or Egg.");
+          System.out.println(errorMessage);
         }
-
 
         break;
       default:
-        System.out.println("Invalid input entered. Terminating...");
+        System.out.println(errorMessage);
         break;
     }
   }
