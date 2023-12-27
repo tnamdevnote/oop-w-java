@@ -3,14 +3,20 @@ package module_4;
 public class ArraySearch {
   public static void main (String[] args) {
     String[] concepts = { "abstraction", "polymorphism", "inheritance", "encapsulation" };
-    String result = "not found";
+    
+    System.out.println(searchStringArray("polymorphism", concepts));
+    System.out.println(searchStringArray("inheritance", concepts));
+  }
 
-    for (String concept: concepts) {
-      if (concept.equals("polymorphism")) {
-        result = "found";
-        break; // breaks the loop once we find the value.
+  public static boolean searchStringArray(String target, String[] array) {
+    boolean result = false;
+
+    for (String element: array) {
+      if (element.equals(target)) {
+        result = true;
+        break;
       }
     }
-    System.out.println(result);
+    return result;
   }
 }
