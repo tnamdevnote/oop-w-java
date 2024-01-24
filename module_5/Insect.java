@@ -20,7 +20,25 @@ public class Insect {
     weight = initWeight;
     x = initX;
     y = initY;
-    population++; //
+    population++;
+  }
+
+  // methods
+  // These are called accessor methods
+  public double getWeight() {
+    return weight;
+  }
+
+  public int getX() {
+    return x;
+  }
+
+  public int getY() {
+    return y;
+  }
+
+  public static int getPopulation() {
+    return population;
   }
 
   // Instance methods
