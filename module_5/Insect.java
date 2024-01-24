@@ -95,6 +95,10 @@ public class Insect {
     return FACTS[index];
   }
 
+  public String toString() {
+    return  "weight: " + weight + ", x:" + x + ", y: " + y;
+  }
+
   //test method
   public static void main(String[] args) {
     // Insect buzz1 = new Insect();
