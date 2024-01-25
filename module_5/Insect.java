@@ -40,15 +40,21 @@ public class Insect {
     return x;
   }
 
+  public int getY() {
+    return y;
+  }
+
+  public static int getPopulation() {
+    return population;
+  }
+
+  // These are mutator methods
   public void setX(int x) {
     if (isLegalX(x)) {
       this.x = x;
     }
   }
   
-  public int getY() {
-    return y;
-  }
   
   public void setY(int y) {
     if (isLegalY(y)) {
@@ -62,10 +68,6 @@ public class Insect {
 
   public static boolean isLegalY(int newY) {
     return (newY >= 0 ? true : false);
-  }
-
-  public static int getPopulation() {
-    return population;
   }
 
   // Instance methods
