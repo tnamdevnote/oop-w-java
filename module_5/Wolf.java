@@ -1,6 +1,6 @@
 package module_5;
 
-public class Wolf extends Canine{
+public class Wolf extends Canine {
   protected int rank;
 
   public Wolf(double size, int rank) {
