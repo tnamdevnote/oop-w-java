@@ -24,7 +24,7 @@ public class Frog {
     this.name = name;
     this.age = age;
     this.tongueSpeed = tongueSpeed;
-    this.isFroglet = (age > 1 && age < 7 ) ? true : false;
+    this.isFroglet = (age > 1 && age < 7 );
   }
   
   public static String getSpecies() {

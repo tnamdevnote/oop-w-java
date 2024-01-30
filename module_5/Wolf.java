@@ -17,6 +17,16 @@ public class Wolf extends Canine {
       super.bark();
     }
   }
+  
+  public void bark(int barkMultiple) {
+    for (int i = 1; i <= barkMultiple; i++) {
+      super.bark();
+    }
+  }
+
+  public void groom() {
+    System.out.println("lick");
+  }
 
   public static void main(String args[]) {
     Wolf alpha = new Wolf(9.6, 1);
