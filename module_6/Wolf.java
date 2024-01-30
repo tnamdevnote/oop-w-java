@@ -1,6 +1,6 @@
 package module_6;
 
-public class Wolf extends Canine {
+public class Wolf extends Canine implements Groomable, Comparable<Wolf> {
   protected int rank;
 
   public Wolf(double size, int rank) {
@@ -28,8 +28,13 @@ public class Wolf extends Canine {
     System.out.println("lick");
   }
 
+  public int compareTo(Wolf anotherWolf) {
+    return -(rank - ((Wolf)anotherWolf).rank);
+  }
+
   public static void main(String args[]) {
-    Wolf alpha = new Wolf(9.6, 1);
-    alpha.bark();
+    Wolf alpha = new Wolf(17.6, 1);
+    Wolf puppy = new Wolf(3, 10);
+    System.out.println(alpha.compareTo(puppy));
   }
 }
