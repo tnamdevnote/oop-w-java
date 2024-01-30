@@ -1,6 +1,6 @@
-package module_5;
+package module_6;
 
-public class Car {
+public class Car implements Groomable {
   private String make;
   private String model;
   private int year;

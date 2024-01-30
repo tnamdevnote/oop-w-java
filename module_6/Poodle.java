@@ -1,4 +1,4 @@
-package module_5;
+package module_6;
 
 public class Poodle extends Dog {
   private String favoriteShampoo;

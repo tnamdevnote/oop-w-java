@@ -1,4 +1,4 @@
-package module_5;
+package module_6;
 
 public class GroomEverything {
   public static void main(String[] args) {
