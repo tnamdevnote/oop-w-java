@@ -1,6 +1,6 @@
 package module_6;
 
-public class Wolf extends Canine implements Groomable, Comparable<Wolf> {
+public class Wolf extends Canine implements Comparable<Wolf> {
   protected int rank;
 
   public Wolf(double size, int rank) {

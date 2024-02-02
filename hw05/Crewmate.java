@@ -1,0 +1,5 @@
+package hw05;
+
+public interface Crewmate {
+  void completeTask();
+}
