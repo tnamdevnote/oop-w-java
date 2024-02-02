@@ -22,6 +22,7 @@ public class RedAstronaut extends Player implements Impostor{
       return;
     }
 
+    // See how many players are not frozen and not the player he/her self.
     int nonFrozenPlayerCount = 0;
     Player[] players = getPlayers();
 
@@ -31,9 +32,11 @@ public class RedAstronaut extends Player implements Impostor{
       }
     }
 
+    // if there is none stop the function
     if (nonFrozenPlayerCount == 0) {
       return;
     } 
+    // if there is only one player, freeze him/her
     if (nonFrozenPlayerCount == 1) {
       for (Player p: players) {
         if (!p.isFrozen() && !p.equals(this)) {
@@ -41,17 +44,23 @@ public class RedAstronaut extends Player implements Impostor{
         }
       }
     }
+    // if there are more than or equal to 2,  fill up new array.
     if (nonFrozenPlayerCount >= 2) {
+      // initialize new array
       Player[] nonFrozenPlayers = new Player[nonFrozenPlayerCount];
+      // use counter to keep track of index of the new array.
       int count = 0;
+      // iterate on original array and fill up new array.
       for (Player p: players) {
         if (!p.isFrozen() && !p.equals(this)) {
           nonFrozenPlayers[count] = p;
           count++;
         }
       }
+      // trimdown new array to make sure there are no sparse element.
       nonFrozenPlayers = Arrays.copyOf(nonFrozenPlayers, count);
 
+      // sort in descending order
       Arrays.sort(nonFrozenPlayers);
       // retrieve the last item in the array, which has the highest susLevel
       int length = nonFrozenPlayers.length;
@@ -65,24 +74,6 @@ public class RedAstronaut extends Player implements Impostor{
 
     }
   }
-
-  // public void emergencyMeeting() {
-  //   if (isFrozen()) {
-  //     return;
-  //   }
-  //   Player[] players = getPlayers();
-  //   // sort the array
-  //   Arrays.sort(players);
-  //   // retrieve the last item in the array, which has the highest susLevel
-  //   int length = players.length;
-  //   Player playerWithHighestSusLevel = players[length-1];
-
-  //   // vote. freeze the player with highest suslevel
-  //   if (playerWithHighestSusLevel.getSusLevel() != players[length-2].getSusLevel()) {
-  //     playerWithHighestSusLevel.setFrozen(true);
-  //     gameOver();
-  //   };
-  // }
 
   public void freeze(Player p) {
     if (!isFrozen() && p instanceof Crewmate && !p.isFrozen()) {

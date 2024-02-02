@@ -77,23 +77,6 @@ public class BlueAstronaut extends Player implements Crewmate{
     }
   }
 
-  // public void emergencyMeeting() {
-  //   if (isFrozen()) {
-  //     return;
-  //   }
-  //   Player[] players = getPlayers();
-  //   // sort the array
-  //   Arrays.sort(players);
-  //   // retrieve the last item in the array, which has the highest susLevel
-  //   Player playerWithHighestSusLevel = players[players.length-1];
-
-  //   // vote. freeze the player with highest suslevel
-  //   if (playerWithHighestSusLevel.getSusLevel() != players[players.length-2].getSusLevel()) {
-  //     playerWithHighestSusLevel.setFrozen(true);
-  //     gameOver();
-  //   };
-  // }
-
   public void completeTask() {
     if (isFrozen() || numTasks == 0) {
       return;
